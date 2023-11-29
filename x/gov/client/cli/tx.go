@@ -136,7 +136,7 @@ metadata example:
 				return err
 			}
 
-			msg, err := v1.NewMsgSubmitProposal(msgs, deposit, clientCtx.GetFromAddress().String(), metadata, title, summary)
+			msg, err := v1.NewMsgSubmitProposal(msgs, deposit, clientCtx.GetFromAddress().String(), metadata, title, summary, false)
 			if err != nil {
 				return fmt.Errorf("invalid message: %w", err)
 			}

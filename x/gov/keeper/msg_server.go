@@ -228,6 +228,7 @@ func (k legacyMsgServer) SubmitProposal(goCtx context.Context, msg *v1beta1.MsgS
 		"",
 		msg.GetContent().GetTitle(),
 		msg.GetContent().GetDescription(),
+		false,
 	)
 	if err != nil {
 		return nil, err

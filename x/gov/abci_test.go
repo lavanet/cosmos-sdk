@@ -44,6 +44,7 @@ func TestTickExpiredDepositPeriod(t *testing.T) {
 		"",
 		"Proposal",
 		"description of proposal",
+		false,
 	)
 	require.NoError(t, err)
 
@@ -100,6 +101,7 @@ func TestTickMultipleExpiredDepositPeriod(t *testing.T) {
 		"",
 		"Proposal",
 		"description of proposal",
+		false,
 	)
 	require.NoError(t, err)
 
@@ -126,6 +128,7 @@ func TestTickMultipleExpiredDepositPeriod(t *testing.T) {
 		"",
 		"Proposal",
 		"description of proposal",
+		false,
 	)
 	require.NoError(t, err)
 
@@ -187,6 +190,7 @@ func TestTickPassedDepositPeriod(t *testing.T) {
 		"",
 		"Proposal",
 		"description of proposal",
+		false,
 	)
 	require.NoError(t, err)
 
@@ -240,7 +244,7 @@ func TestTickPassedVotingPeriod(t *testing.T) {
 	activeQueue.Close()
 
 	proposalCoins := sdk.Coins{sdk.NewCoin(sdk.DefaultBondDenom, suite.StakingKeeper.TokensFromConsensusPower(ctx, 5))}
-	newProposalMsg, err := v1.NewMsgSubmitProposal([]sdk.Msg{mkTestLegacyContent(t)}, proposalCoins, addrs[0].String(), "", "Proposal", "description of proposal")
+	newProposalMsg, err := v1.NewMsgSubmitProposal([]sdk.Msg{mkTestLegacyContent(t)}, proposalCoins, addrs[0].String(), "", "Proposal", "description of proposal", false)
 	require.NoError(t, err)
 
 	wrapCtx := sdk.WrapSDKContext(ctx)
