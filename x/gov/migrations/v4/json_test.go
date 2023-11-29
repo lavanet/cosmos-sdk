@@ -62,6 +62,7 @@ func TestMigrateJSON(t *testing.T) {
 		"burn_proposal_deposit_prevote": false,
 		"burn_vote_quorum": false,
 		"burn_vote_veto": true,
+		"expedited_min_deposit": [],
 		"max_deposit_period": "172800s",
 		"min_deposit": [
 			{
