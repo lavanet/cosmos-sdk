@@ -212,6 +212,16 @@ message Params {
   //  The ratio representing the proportion of the deposit value that must be paid at proposal submission.
   string min_initial_deposit_ratio = 7 [(cosmos_proto.scalar) = "cosmos.Dec"];
 
+  // Duration of the voting period of an expedited proposal.
+  //
+  // Since: cosmos-sdk 0.50
+  google.protobuf.Duration expedited_voting_period = 10 [(gogoproto.stdduration) = true];
+
+  // Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
+  //
+  // Since: cosmos-sdk 0.50
+  string expedited_threshold = 11 [(cosmos_proto.scalar) = "cosmos.Dec"];
+
   //  Minimum expedited deposit for a proposal to enter voting period.
   repeated cosmos.base.v1beta1.Coin expedited_min_deposit = 12
   [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];

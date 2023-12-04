@@ -33,7 +33,7 @@ func (k msgServer) SubmitProposal(goCtx context.Context, msg *v1.MsgSubmitPropos
 
 	initialDeposit := msg.GetInitialDeposit()
 
-	if err := k.validateInitialDeposit(ctx, initialDeposit); err != nil {
+	if err := k.validateInitialDeposit(ctx, initialDeposit, msg.Expedited); err != nil {
 		return nil, err
 	}
 

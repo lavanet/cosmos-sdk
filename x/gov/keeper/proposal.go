@@ -3,6 +3,7 @@ package keeper
 import (
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -262,7 +263,12 @@ func (keeper Keeper) SetProposalID(ctx sdk.Context, proposalID uint64) {
 func (keeper Keeper) ActivateVotingPeriod(ctx sdk.Context, proposal v1.Proposal) {
 	startTime := ctx.BlockHeader().Time
 	proposal.VotingStartTime = &startTime
-	votingPeriod := keeper.GetParams(ctx).VotingPeriod
+	var votingPeriod *time.Duration
+	if proposal.Expedited {
+		votingPeriod = keeper.GetParams(ctx).ExpeditedVotingPeriod
+	} else {
+		votingPeriod = keeper.GetParams(ctx).VotingPeriod
+	}
 	endTime := proposal.VotingStartTime.Add(*votingPeriod)
 	proposal.VotingEndTime = &endTime
 	proposal.Status = v1.StatusVotingPeriod
