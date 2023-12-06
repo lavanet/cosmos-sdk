@@ -22,4 +22,5 @@ const (
 	AttributeKeyProposalType         = "proposal_type"
 	AttributeSignalTitle             = "signal_title"
 	AttributeSignalDescription       = "signal_description"
+	AttributeKeyVoter                = "voter"
 )
